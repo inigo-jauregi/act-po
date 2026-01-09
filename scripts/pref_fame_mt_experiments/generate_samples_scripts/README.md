@@ -4,8 +4,8 @@ These scripts are used to generate samples from
 pretrained models or AWS Bedrock models.
 
 This is an example of the script to generate samples
-from a AWS Bedrock model in batch inference mode (e.g., Sonnet 3),
-over the MT-GenEval training dataset for a specific language pair (`claude_gen_samples.sh`):
+from a AWS Bedrock model in batch inference mode (e.g., Sonnet 4.5),
+over the PREF-FAME-MT training dataset for a specific language pair (`claude_gen_samples.sh`):
 
 ```bash
 #!/bin/bash
@@ -13,24 +13,24 @@ over the MT-GenEval training dataset for a specific language pair (`claude_gen_s
 export CUDA_HOME=/usr/local/cuda-12.4
 export AWS_PROFILE=<AWS_PROFILE>
 
-MODEL_SONNET="anthropic.claude-3-sonnet-20240229-v1:0"
-PROMPT_CTRL="Here is a sentence {<INPUT_SRC>}; Please provide the <TGT_LANG> translation in which every mentioned person's gender is <GENDER> between curly brackets: {<OUTPUT_TGT>};
-        In the translation, the <GENDER> gender of the person is made explicit by words such as <GENDER_TOKENS>."
+MODEL_SONNET="au.anthropic.claude-sonnet-4-5-20250929-v1:0"
+PROMPT_CTRL="Here is a sentence {<INPUT_SRC>}; Please provide the <TGT_LANG> translation written in <FORMALITY> style between curly brackets: {<OUTPUT_TGT>};
+        The translated sentence conveys a formal style by using words such as <FORMALITY_TOKENS>."
 
 for SRC_LANG in "en"; do
   for TGT_LANG in "hi"; do
     for TEMP in 0.0 0.2 0.4 0.5 0.6 0.8 0.9 1.0; do
       for ITER in 1 2 3 4; do
 
-        TRAIN_PATH="./data/MT_GenEval/dataset_uts/${SRC_LANG}-${TGT_LANG}/train"
-        VAL_PATH="./data/MT_GenEval/dataset_uts/${SRC_LANG}-${TGT_LANG}/val"
-        TEST_PATH="./data/MT_GenEval/dataset_uts/${SRC_LANG}-${TGT_LANG}/train"
+        TRAIN_PATH="./data/PREF_FAME_MT/${SRC_LANG}-${TGT_LANG}/train"
+        VAL_PATH="./data/PREF_FAME_MT/${SRC_LANG}-${TGT_LANG}/val"
+        TEST_PATH="./data/PREF_FAME_MT/${SRC_LANG}-${TGT_LANG}/train"
 
         # zero-shot un-controlled experiments
         if [[ "$SRC_LANG" != "${TGT_LANG}" ]]; then
-          EXPERIMENT_NAME="synthetic_mt_geneval_sonnet_3_ic_${SRC_LANG}-${TGT_LANG}"
+          EXPERIMENT_NAME="synthetic_pref_fame_mt_sonnet_4_5_ic_${SRC_LANG}-${TGT_LANG}"
           echo "SAMPLE GENERATION for ${SRC_LANG} to ${TGT_LANG} - Iter ${ITER}"
-          python3 -m scripts.mt_geneval_experiments.train_model \
+          python3 -m scripts.pref_fame_mt_experiments.train_model \
               --model-name ${MODEL_SONNET} \
               --experiment-name ${EXPERIMENT_NAME} \
               --train-data ${TRAIN_PATH} \
