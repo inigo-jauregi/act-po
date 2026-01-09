@@ -1,5 +1,5 @@
 # Attribute-Controlled Translation with Preference Optimization
-Controlled machine translation and automatic post-editing for low-resource languages
+This repository contains the code for the paper "Attribute-Controlled Translation with Preference Optimization" (Findings of EACL 2026).
 
 ## Installation
 
@@ -10,3 +10,8 @@ Controlled machine translation and automatic post-editing for low-resource langu
 ## Train/eval models
 
 You can find all the scripts in the `scripts` folder to reproduce the results in the paper.
+
+
+## Citation
+
+Coming soon.
