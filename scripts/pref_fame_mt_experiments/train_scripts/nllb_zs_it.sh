@@ -24,7 +24,7 @@ for i in "${!SRC_LANG[@]}"; do
 
     # zero-shot un-controlled experiments
     echo "EXPERIMENT: ${EXPERIMENT_NAME} | NLLB (ZS)"
-    python3 -m scripts.fame_mt_experiments.train_model \
+    python3 -m scripts.pref_fame_mt_experiments.train_model \
         --model-name ${MODEL_NAME} \
         --train-data ${TRAIN_PATH} \
         --val-data ${VAL_PATH} \
@@ -39,7 +39,7 @@ for i in "${!SRC_LANG[@]}"; do
         --fix-seed ${FIXED_SEED}
 
         echo "EXPERIMENT: ${EXPERIMENT_NAME} | NLLB (IT)"
-        python3 -m scripts.fame_mt_experiments.train_model \
+        python3 -m scripts.pref_fame_mt_experiments.train_model \
             --model-name ${MODEL_NAME} \
             --train-data ${TRAIN_PATH} \
             --val-data ${VAL_PATH} \

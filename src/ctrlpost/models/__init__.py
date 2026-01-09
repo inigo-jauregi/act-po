@@ -29,6 +29,9 @@ class ModelFactory:
         r'.*Qwen.*': {'cross_entropy': CtrlQwenModel, 'dpo': CtrlQwenModelDpo, 'cpo': CtrlQwenModelCpo},
         r'.*Qwen-.*': {'cross_entropy': CtrlQwenModel, 'dpo': CtrlQwenModelDpo, 'cpo': CtrlQwenModelCpo},
 
+        # EuroLLM patterns
+        r'.*EuroLLM-.*': {'cross_entropy': CtrlQwenModel, 'dpo': CtrlQwenModelDpo, 'cpo': CtrlQwenModelCpo},
+
         # AWS Bedrock patterns (Claude models)
         r'.*anthropic\.claude.*': {'cross_entropy': CtrlAwsBedrockModel},
         r'.*bedrock.*': {'cross_entropy': CtrlAwsBedrockModel},

@@ -7,7 +7,7 @@ BATCH_SIZE=1
 MAX_SEQ_LEN=512
 LEARNING_RATE=5e-6
 MAX_EPOCHS=30
-VAL_CHECK_INTERVAL=30
+VAL_CHECK_INTERVAL=1000
 MODEL_NAME="facebook/nllb-200-distilled-600M"
 PROMPT_UNCTRL="<INPUT_SRC>"
 PROMPT_CTRL="<FORMALITY> <INPUT_SRC>"
@@ -30,7 +30,7 @@ for i in "${!SRC_LANG[@]}"; do
     if [[ "$SRC_LANG" != "${TGT_LANG}" ]]; then
 
         echo "EXPERIMENT: ${EXPERIMENT_NAME} | NLLB (IT+CPO)"
-        python3 -m scripts.fame_mt_experiments.train_model \
+        python3 -m scripts.pref_fame_mt_experiments.train_model \
           --model-name ${MODEL_NAME} \
           --train-data ${TRAIN_PATH} \
           --val-data ${VAL_PATH} \
