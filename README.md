@@ -5,7 +5,7 @@ This repository contains the code for the paper "[Attribute-Controlled Translati
 
 - Python:  3.11.11
 - `pip install -r requirements.txt`
-- You can download checkpoints from Huggingface using the `scripts/general/download_pretrained_lm.py` script into the `./pretrained_lms` folder.
+- You can download baseline checkpoints from Huggingface using the `scripts/general/download_pretrained_lm.py` script into the `./pretrained_lms` folder.
 
 ## Train/eval models
 
