@@ -1,5 +1,5 @@
 # Attribute-Controlled Translation with Preference Optimization
-This repository contains the code for the paper "Attribute-Controlled Translation with Preference Optimization" (Findings of EACL 2026).
+This repository contains the code for the paper "[Attribute-Controlled Translation with Preference Optimization](https://aclanthology.org/2026.findings-eacl.209/)" (Findings of EACL 2026).
 
 ## Installation
 
